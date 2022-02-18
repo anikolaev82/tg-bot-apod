@@ -10,4 +10,4 @@ RUN apt-get -y update && \
         apt-get install -y python3-pip && \
         pip install ${PATH_ROOT}/nasaapi-1.0.0b0-py3-none-any.whl && \
         pip install -r requirements
-ENTRYPOINT ["python3", "main.py"]
+ENTRYPOINT ["python3", "bot.py"]
