@@ -8,6 +8,7 @@ COPY . ${PATH_ROOT}
 RUN apt-get -y update && \
         apt-get -y upgrade && \
         apt-get install -y python3-pip && \
-        pip install ${PATH_ROOT}/nasaapi-1.0.0b0-py3-none-any.whl && \
+        pip install psycopg2-binary && \
+        pip install ${PATH_ROOT}/nasaapi-latest-py3-none-any.whl && \
         pip install -r requirements
 ENTRYPOINT ["python3", "bot.py"]
