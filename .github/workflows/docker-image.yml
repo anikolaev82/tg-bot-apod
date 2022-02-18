@@ -1,34 +1,23 @@
-name: Push Docker image to Docker Hub
+name: Docker Image CI
 
 on:
   push:
     branches: master
   workflow_dispatch:
-  
+
 jobs:
   build:
-    name: Build and push in docker hub
+    name: Deploy in yandex cloud. Serverless container
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: anikolaev82
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: anikolaev82/tg-bot-apod
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build, tag, and push image to Yandex Cloud Container Registry
+        env:
+          CR_REGISTRY: tg-bot-apod
+          CR_REPO: crpbih42jehlbjekjma9
+          IMAGE_TAG: latest
+        run: |
+          docker login --username oauth --password ${{secrets.YC_OAUTH_TOKEN}} cr.yandex 
+          docker build -t cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG . 
+          docker push cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG
