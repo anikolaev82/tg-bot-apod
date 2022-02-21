@@ -29,12 +29,12 @@ dp = Dispatcher(bot, storage=storage)
 btn_random = KeyboardButton('Random')
 
 markup_kbr = ReplyKeyboardMarkup(resize_keyboard=True).add(btn_random)
-
+"""
 logging.basicConfig(format='%(asctime)s~%(filename)s~%(funcName)s~%(lineno)s~%(message)s', \
                     encoding='utf-8', \
                     level=logging.INFO, \
                     datefmt='%m/%d/%Y %I:%M:%S %p')
-
+"""
 
 class Form(StatesGroup):
     choice_rover = State()
