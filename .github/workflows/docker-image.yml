@@ -14,8 +14,8 @@ jobs:
 
       - name: Build, tag, and push image to Yandex Cloud Container Registry
         env:
-          CR_REGISTRY: tg-bot-apod
-          CR_REPO: crpbih42jehlbjekjma9
+          CR_REGISTRY: crpbih42jehlbjekjma9
+          CR_REPO: tg-bot-apod
           IMAGE_TAG: latest
         run: |
           docker login --username oauth --password ${{secrets.YC_OAUTH_TOKEN}} cr.yandex 
