@@ -26,14 +26,9 @@ bot = Bot(token=TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
-btn_random = KeyboardButton('Random')
+btn_random = KeyboardButton('Случайное фото')
 
 markup_kbr = ReplyKeyboardMarkup(resize_keyboard=True).add(btn_random)
-
-logging.basicConfig(format='%(asctime)s~%(filename)s~%(funcName)s~%(lineno)s~%(message)s', \
-                    encoding='utf-8', \
-                    level=logging.INFO, \
-                    datefmt='%m/%d/%Y %I:%M:%S %p')
 
 
 class Form(StatesGroup):
@@ -48,7 +43,7 @@ async def command_start(message: types.Message):
                                    )
 
 
-@dp.message_handler(Text(equals=['Random'], ignore_case=True), state='*')
+@dp.message_handler(Text(equals=['Случайное фото'], ignore_case=True), state='*')
 async def command_start(message: types.Message):
     resp = apod.get_random()
     msg = f'Date {bold(resp.date)}: \n {resp.explanation} \n {link(resp.title, resp.hdurl)}'
