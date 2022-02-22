@@ -9,9 +9,10 @@ from aiogram.types import ParseMode, KeyboardButton, ReplyKeyboardMarkup, ReplyK
 from aiogram.utils.markdown import text, bold, link
 from aiogram.utils import executor
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from nasaapi.config import Config
-from nasaapi.apod.apod import APOD
-from nasaapi.entity.storagememory import StorageMemory
+from wsnasa.config import Config
+from wsnasa.services.apod.apod import APOD
+from wsnasa.entity.storagememory import StorageMemory
+
 
 conf = Config(token=os.environ.get('NASATOKEN'), \
               base_uri=f'https://api.nasa.gov/planetary/apod', \
