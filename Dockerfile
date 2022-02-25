@@ -9,7 +9,5 @@ RUN apt-get -y update && \
         apt-get -y upgrade && \
         apt-get install -y python3.9 && \
         apt-get install -y python3-pip && \
-        pip install psycopg2-binary && \
-        pip install wsnasa && \
         pip install -r requirements
 ENTRYPOINT ["python3", "bot.py"]

@@ -2,3 +2,5 @@ import os
 
 
 TOKEN = os.environ.get('TGBOTAPODTOKEN')
+AWSACCESSKEYID = os.environ.get('AWSACCESSKEYID')
+AWSSECRETACCESSKEY = os.environ.get('AWSSECRETACCESSKEY')
